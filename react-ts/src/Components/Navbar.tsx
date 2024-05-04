@@ -1,15 +1,15 @@
 import { FaRegFileAlt } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
     return (
         <div>
 
             <nav className="flex items-center justify-between bg-[#393E46] px-4 py-2 text-white">
                 <div className="scale-100 rounded-2xl px-3 py-2 text-xl font-semibold text-white transition-all duration-200 hover:scale-110">
-                    <div className="flex justify-center">
+                    <Link to={'/'} className="flex justify-center">
                         <FaRegFileAlt className=" text-blue-500 text-2xl" />
                         <h2>Blog</h2>
-                    </div>
+                    </Link>
                 </div>
                 <ul className="flex items-center justify-between gap-6 text-slate-900">
                     <NavLink to={'/'}><li className="cursor-pointer  rounded-full  px-6 py-2 text-white hover:bg-sky-600">Home</li></NavLink>
