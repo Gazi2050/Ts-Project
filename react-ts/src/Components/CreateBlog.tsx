@@ -30,7 +30,7 @@ const CreateBlog = () => {
         <div>
             <h1 className="text-center text-2xl font-semibold mt-1">Create Blog</h1>
             <div>
-                <section className="max-w-4xl p-6 mx-auto bg-slate-300 rounded-md shadow-md dark:bg-gray-800 my-3">
+                <section className="max-w-4xl p-6 mx-auto bg-slate-300 rounded-md shadow-md dark:bg-gray-800 my-3 ">
                     <Formik
                         initialValues={{ title: '', description: '', date: '' }}
                         onSubmit={handleSubmit}

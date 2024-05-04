@@ -14,6 +14,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import BlogDetails from './Components/BlogDetails.tsx';
+import MyBlogDetails from './Components/MyBlogDetails.tsx';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
       {
         path: '/blogDetails/:id',
         element: <BlogDetails />,
+        loader: ({ params }) => fetch(`https://server-two-kohl.vercel.app/blogs/${params.id}`)
+      },
+      {
+        path: '/myBlogDetails/:id',
+        element: <MyBlogDetails />,
         loader: ({ params }) => fetch(`https://server-two-kohl.vercel.app/blogs/${params.id}`)
       },
       {

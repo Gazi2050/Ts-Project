@@ -12,17 +12,20 @@ interface Blog {
 }
 const Home = () => {
     const axiosPublic = useAxiosPublic();
-    const { data: blogs = [], refetch, isError, isLoading } = useQuery<Blog[], AxiosError>({
+    const { data: blogs = [], isError, isLoading } = useQuery<Blog[], AxiosError>({
         queryKey: ['blogs'],
         queryFn: async ({ queryKey }: QueryFunctionContext) => {
+            console.log(queryKey);
             try {
                 const res = await axiosPublic.get<Blog[]>('/blogs');
                 return res.data;
             } catch (error) {
-                throw error.response?.data ?? error;
+                console.error("Error fetching blogs:", error);
+                throw error;
             }
         }
     });
+
     return (
         <div>
             <h1 className="text-center text-2xl font-semibold mt-1">Home</h1>
