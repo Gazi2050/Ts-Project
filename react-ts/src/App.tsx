@@ -1,11 +1,14 @@
+import { Outlet } from "react-router-dom";
+import Navbar from "./Components/Navbar";
 
 
-function App() {
+const App = () => {
   return (
-    <div className="mt-24">
-      <h1 className="text-center text-4xl font-bold">Hello React-TypeScript</h1>
+    <div>
+      <Navbar />
+      <Outlet />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
