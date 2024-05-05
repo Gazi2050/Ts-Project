@@ -63,7 +63,7 @@ async function run() {
                     updateTime: blog.updateTime
                 },
                 $unset: {
-                    dateTime: 1
+                    date: 1
                 }
             }
             const result = await blogCollection.updateOne(filter, updateBlog, option);
