@@ -9,6 +9,7 @@ interface Blog {
     title: string;
     description: string;
     date: string;
+    updateTime: string;
 }
 const Home = () => {
     const axiosPublic = useAxiosPublic();
@@ -43,7 +44,11 @@ const Home = () => {
                 {blogs.map(blog => <div key={blog._id} className="w-full px-8 py-4  bg-slate-300  rounded-lg border-2 border-blue-500">
 
                     <h2 className="mt-2 text-xl font-semibold text-black dark:text-white md:mt-0">{blog.title}</h2>
-                    <p className="text-sm text-gray-500">{blog.date}</p>
+                    {blog.date ? (
+                        <p className="text-sm text-gray-500">Posted on {blog?.date}</p>
+                    ) : (
+                        <p className="text-sm text-gray-500">Updated on {blog?.updateTime}</p>
+                    )}
                     <p className="line-clamp-3 mt-2 text-sm text-black dark:text-gray-200">{blog.description}</p>
 
                     <div className="flex justify-end mt-4">

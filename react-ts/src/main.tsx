@@ -15,6 +15,7 @@ import {
 } from '@tanstack/react-query'
 import BlogDetails from './Components/BlogDetails.tsx';
 import MyBlogDetails from './Components/MyBlogDetails.tsx';
+import EditBlog from './Components/EditBlog.tsx';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <h1 className='text-center text-4xl mt-40 font-bold text-red-600'>404 Error</h1>,
     children: [
       {
         index: true,
@@ -44,6 +46,11 @@ const router = createBrowserRouter([
       {
         path: '/myBlogDetails/:id',
         element: <MyBlogDetails />,
+        loader: ({ params }) => fetch(`https://server-two-kohl.vercel.app/blogs/${params.id}`)
+      },
+      {
+        path: '/editBlog/:id',
+        element: <EditBlog />,
         loader: ({ params }) => fetch(`https://server-two-kohl.vercel.app/blogs/${params.id}`)
       },
       {

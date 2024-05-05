@@ -6,6 +6,7 @@ interface BlogData {
     title: string;
     description: string;
     date: string;
+    updateTime: string;
 }
 
 const MyBlogDetails = () => {
@@ -16,7 +17,6 @@ const MyBlogDetails = () => {
     useEffect(() => {
         const fetchBlogData = async () => {
             try {
-                // Simulating data fetching delay
                 await new Promise(resolve => setTimeout(resolve, 1000));
                 setLoading(false);
             } catch (error) {
@@ -38,7 +38,11 @@ const MyBlogDetails = () => {
             {!loading && !error && (
                 <div>
                     <h1 className="text-3xl font-bold  underline underline-offset-8 m-5 text-black">{blog.title}</h1>
-                    <p className="text-sm text-gray-500 m-5">Posted On {blog.date}</p>
+                    {blog.date ? (
+                        <p className="text-sm text-slate-600 m-5">Posted on {blog?.date}</p>
+                    ) : (
+                        <p className="text-sm text-slate-600 m-5">Updated on {blog?.updateTime}</p>
+                    )}
                     <p className="text-justify mx-5 text-xl font-medium">{blog.description}</p>
                 </div>
             )}
